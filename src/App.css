@@ -1,0 +1,10 @@
+.checked {
+  color: orange;
+}
+.artist-image {
+  max-width: 100%;
+  max-height: 80%;
+  object-fit: cover;
+  border-radius: 10px;
+  align-items: center;
+}
