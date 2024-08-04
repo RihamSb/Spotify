@@ -4,8 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, InputGroup, FormControl, Button, Row, Card, CardBody, CardImg } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom'; // Import Link
 
-const CLIENT_ID = 'c33066c49bfc4de4a62b0c620868dd31';
-const CLIENT_SECRET = '48333a526370498f99a37acd13ade89d';
+const CLIENT_ID = '';
+const CLIENT_SECRET = '';
 
 function ArtistSearch() {
   const navigate = useNavigate();
