@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Card, CardBody, CardImg, Button } from 'react-bootstrap';
 
-const CLIENT_ID = 'c33066c49bfc4de4a62b0c620868dd31';
-const CLIENT_SECRET = '48333a526370498f99a37acd13ade89d';
+const CLIENT_ID = '';
+const CLIENT_SECRET = '';
 
 function ArtistPage() {
   const { id } = useParams(); 
