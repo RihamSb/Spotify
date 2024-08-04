@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import spo from './spo.png';
 
 function Login() {
-  const CLIENT_ID = "c33066c49bfc4de4a62b0c620868dd31";
+  const CLIENT_ID = "";
   const REDIRECT_URI = "http://localhost:3000";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
