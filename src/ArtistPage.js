@@ -1,17 +1,21 @@
+// npm install aos
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Card, CardBody, CardImg, Button } from 'react-bootstrap';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const CLIENT_ID = '';
 const CLIENT_SECRET = '';
 
 function ArtistPage() {
-  const { id } = useParams(); 
+  const { id } = useParams(); //get the id parameter from the URL
   const [albums, setAlbums] = useState([]);
   const [accessToken, setAccessToken] = useState('');
   const [artist, setArtist] = useState({}); 
   const navigate = useNavigate();
-
+    
+  //request the API Access Token
   useEffect(() => {
     const fetchAccessToken = async () => {
       try {
@@ -31,6 +35,7 @@ function ArtistPage() {
     fetchAccessToken();
   }, []);
 
+  //get data of the artist depend on the id
   useEffect(() => {
     const fetchArtist = async () => {
       try {
@@ -42,7 +47,8 @@ function ArtistPage() {
           },
         });
         const data = await response.json();
-        setArtist(data);
+        setArtist(data);        
+        console.log(data)
       } catch (error) {
         console.error(error);
       }
@@ -50,6 +56,7 @@ function ArtistPage() {
     fetchArtist();
   }, [accessToken, id]);
 
+  //get the album of the artist
   useEffect(() => {
     const fetchAlbums = async () => {
       try {
@@ -62,6 +69,7 @@ function ArtistPage() {
         });
         const data = await response.json();
         setAlbums(data.items);
+        console.log(data)
       } catch (error) {
         console.error(error);
       }
@@ -69,9 +77,14 @@ function ArtistPage() {
     fetchAlbums();
   }, [accessToken, id]);
 
+
   const handleBackButton = () => {
     navigate('/artist-search');
   };
+
+  useEffect(()=>{
+    AOS.init({duration: 2000})
+  }, [])
 
   return (
     <>
@@ -81,10 +94,11 @@ function ArtistPage() {
         <i className="fa fa-arrow-left" aria-hidden="true"></i> Back to Artist Search
       </Button>
       <h1>{artist.name}</h1> 
+      
       <Row className="mx-2 row row-cols-1 row-cols-md-2 row-cols-lg-4">
         {albums && albums.length > 0 ? (
           albums.map((album) => (
-            <Card className="mb-3" key={album.id}>
+            <Card data-aos="flip-right" className="mb-3" key={album.id}>
               <CardImg src={album.images[0].url} className="album-image mx-auto" />
               <CardBody className="text-center">
                 <Card.Title className="text-center">{album.name}</Card.Title>
