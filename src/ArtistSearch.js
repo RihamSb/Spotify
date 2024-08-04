@@ -52,8 +52,8 @@ function ArtistSearch() {
     const calculateRatings = () => {
       const ratings = {};
       artists.forEach((artist) => {
-        // Calculate the rating for each artist based on some other data
-        const rating = Math.floor(Math.random() * 100); // Replace this with your actual rating calculation
+        // Calculate the rating for each artist 
+        const rating = Math.floor(Math.random() * 100); 
         ratings[artist.id] = rating;
       });
       setArtistRatings(ratings);
