@@ -1,19 +1,22 @@
+// implicit grant
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import spo from './spo.png';
 
 function Login() {
+
   const CLIENT_ID = "";
-  const REDIRECT_URI = "http://localhost:3000";
-  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
+  const REDIRECT_URI = "";
+  const AUTH_ENDPOINT = "";
   const RESPONSE_TYPE = "token";
 
   const [token, setToken] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    const hash = window.location.hash;
+    //to get the hash value from the url #access_token= user's authentication credentials 
+    const hash = window.location.hash; 
     let token = window.localStorage.getItem("token");
 
     if (!token && hash) {
@@ -26,11 +29,12 @@ function Login() {
     setToken(token);
   }, []);
 
+  //if token hange, the funtion will run to hange the page
   useEffect(() => {
     if (token) {
       navigate('/artist-search');
     }
-  }, [token, navigate]);
+  }, [token]);
 
   const logout = () => {
     setToken("");
