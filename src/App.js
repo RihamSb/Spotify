@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './Login';
 import ArtistSearch from './ArtistSearch';
-import ArtistPage from './ArtistPage'; // Import ArtistPage
+import ArtistPage from './ArtistPage'; 
 
 function App() {
   return (
